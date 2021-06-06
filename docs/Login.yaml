@@ -1,0 +1,85 @@
+paths:
+  /auth/login:
+    post:
+      summary: Realiza a autenticação do usuário.
+      tags:
+        - Autenticação
+      parameters:
+        - name: grant_type
+          in: body
+          description:
+          required: true
+          type: string
+          example: password
+        - name: client_id
+          in: body
+          description:
+          required: true
+          type: integer
+          example: 1
+        - name: client_secret
+          in: body
+          description:
+          required: true
+          type: string
+          example: mqy4vb789q0ce3k8v56230l1k746b
+        - name: username
+          in: body
+          description:
+          required: true
+          type: string
+          example: email@dominio.com.br
+        - name: password
+          in: body
+          description:
+          required: true
+          type: string
+          example: a_senha_de_acesso
+        - name: scope
+          in: body
+          description:
+          required: true
+          type: string
+          example: '*'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Login'
+        '404':
+          description: Recurso não encontrado.
+          schema:
+            $ref: '#/definitions/Error404'
+        '401':
+          description: Não autorizado.
+          schema:
+            $ref: '#/definitions/Error401'
+
+definitions:
+  Login:
+    type: object
+    properties:
+      grant_type:
+        type: string
+      client_id:
+        type: integer
+      client_secret:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      scope:
+        type: string
+    required:
+      - grant_type
+      - client_id
+      - client_secret
+      - username
+      - password
+      - scope
+    example:
+      token_type: "Bearer"
+      expires_in: 86400
+      access_token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNmOWUwMTgwYjU5NDhkZmFjZTljMmViNmQ3YTdiNWNmZDFiYzNiZWMzMTk4OTEyN2UxMmU3NWIzNzk2NzVhMDliZThmZDA4Yzk3NDQxN2UwIn0.eyJhdWQiOiIxIiwianRpIjoiM2Y5ZTAxODBiNTk0OGRmYWNlOWMyZWI2ZDdhN2I1Y2ZkMWJjM2JlYzMxOTg5MTI3ZTEyZTc1YjM3OTY3NWEwOWJlOGZkMDhjOTc0NDE3ZTAiLCJpYXQiOjE1NzE5NDM3OTgsIm5iZiI6MTU3MTk0Mzc5OCwiZXhwIjoxNTcyMDMwMTk4LCJzdWIiOiIxNWFjYjU0Ni0zOGNiLTRkOTYtOTdjZS0zNTUyMDg0OWI2NTkiLCJzY29wZXMiOlsiKiJdfQ.H5hL2auK5c8mivZx1blIGaJ1pOkKbLdsQ0cH9_7pIKFCP3AqBF4rrLAF8fJp76WAAoNzROFDt-yBPIIOw9-r3TMymrQHFmcGSV1Gq86nHK_X28z5_Ro7hpwe3CRBhS8JxBHnMEIdEFyPbwBYqgz3j0CbPUhWvl4sgJ7NhM_c0Lb26BJXqlGvIURkby9_asGp3ZODvu4VzjmRbc6d1iepjrqmVeaYIqRC3DQK0x74bWbsH4yTQtVBiYjVHpj4OjTGAVpgws1BzMiNLNcPfFIhAGRzFJDMd0i_0VFdp1ERaufunz18dLLs8UIxbZKh4va0oSiI74xrZEN-9yBDFIAtMlnB2_yAGi4eR-ovKRkGHj0XbgXpD416IGFtpG1oCnqj7OQAEnK6Vc8tONNhj2GtgNlv03atmWT-69iill8hs07Vjq686GKFTplq41tmfJCenyHOsJEQrU1GuAiPLWZyTZYLRWl6m3sSPizZmRxWvEt-dN1kL_-7TXFXCBE22CDh4Y7jRXbO1m9n5gN1vzH3efRASvB6IwPSHTUHOsudwWh-DHclRNm2xuyHy3ci4q8Z9ELxUpSX2BjN6kib0SxqiSlZ3EkhjxcB-MXvAlrM8QN6lM9W9y58qFMA9Y0wDr8L9Ki0yeqyIGHbdxZaVKGav5ANPoFyzS77x9HZABC2uPA"
+      refresh_token: "def50200f3f792006fd20264cf01792c89a120a6e2f9dee6f9cf2859c319b4bef8c56baee9befab5e2f75bc034a9bf171236723e941f594378cb0ae63cf8c2c53683e6f033cfdb9ab47b307db9f644a8d0fd37f99ccfe94b7e52584afab7870033a7cb57554321d61f5c26c7227a44cfd3c6897ac16ffc4af2c4568e3cfc11054f3e7f877e1a4e3d066e1332226546b24d91f6abf59a4b1ef05605aad1847874bc9e73bda6b16ae153fd1a8d40bf9261b6846c116e8ea68f9869ff919afac065c881e04d497fc1091887aee4de55cfce2e48feee6221e7defe34ee754fe22258144f54e7b8d32672852949fdb0cbd4d7ea8ea5ede7cc95d0e750ef786bc09c6861c80f7ea6d5e29c4a2bd981732bb04b3a749f3b1673bd564d302270c124068501e3c4f29e3b19454efaf96193e4f67130d9739233c5dc940be22afa32bab1f4d835502c67736c95c580401b2b456038b9dd805f8b53a937b939179beb75d68d62a750a71b17f34e8e63a2351fd81661b8e5fc857bbb707306fd3b72882b3f7e10d4dc112fb0aba05f"

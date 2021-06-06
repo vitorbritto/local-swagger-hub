@@ -1,0 +1,20 @@
+{
+  "name": "my-web-api",
+  "version": "0.1.0",
+  "description": "API Name - API Design",
+  "main": "swagger.js",
+  "scripts": {
+    "start": "nodemon swagger.js -e yml,yaml"
+  },
+  "keywords": [],
+  "author": "Vitor Britto <code@vitorbritto.com.br> (http://vitorbritto.com.br/)",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui-express": "^4.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
+}

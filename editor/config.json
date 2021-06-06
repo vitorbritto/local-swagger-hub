@@ -1,0 +1,7 @@
+{
+  "title": "Web API - API Name",
+  "version": "0.1.0",
+  "host" : "localhost:3000",
+  "basePath" : "/api/v1",
+  "description": "Description goes here."
+}

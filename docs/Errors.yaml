@@ -1,0 +1,40 @@
+definitions:
+  LoginFail:
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      invalid_fields:
+        type: object
+    example:
+      status: 400
+      invalid_fields:
+        email: O campo email é obrigatório.
+        password: O campo senha é obrigatório.
+
+  Error401:
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      message:
+        type: string
+    example:
+      status: 401
+      message: Não autorizado.
+
+  Error404:
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+      message:
+        type: string
+      invalid_fields:
+        type: string
+    example:
+      status: 404
+      message: Recurso não encontrado.
